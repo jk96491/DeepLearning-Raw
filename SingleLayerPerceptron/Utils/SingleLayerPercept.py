@@ -89,7 +89,7 @@ class SLP:
 
         G_loss = 1.0
         Gradient = self.get_backprop_Gradient(G_loss, aux_pp)
-        self.backprop_neuralnet(Gradient, aux_nn)
+        self.backpropagation(Gradient, aux_nn)
 
         return loss, accuracy
 
@@ -184,7 +184,7 @@ class SLP:
 
         return Gradient
 
-    def backprop_neuralnet(self, Gradient, input):
+    def backpropagation(self, Gradient, input):
         g_output_w = input.transpose()
 
         G_w = np.matmul(g_output_w, Gradient)

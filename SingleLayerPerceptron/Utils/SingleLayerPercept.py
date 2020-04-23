@@ -67,20 +67,20 @@ class SLP:
     def get_test_data(self):
         test_data = self.data[self.shuffle_map[self.test_begin_idx:]]
 
-        testX = test_data[:, :-self.output_count]
-        testY = test_data[:, -self.output_count:]
+        testInput = test_data[:, :-self.output_count]
+        testOutput = test_data[:, -self.output_count:]
 
-        return testX, testY
+        return testInput, testOutput
 
     def get_train_data(self, nth):
         if nth == 0:
             np.random.shuffle(self.shuffle_map[:self.test_begin_idx])
         train_data = self.data[self.shuffle_map[self.mb_size * nth:self.mb_size * (nth + 1)]]
 
-        testX = train_data[:, :-self.output_count]
-        testY = train_data[:, -self.output_count:]
+        trainInput = train_data[:, :-self.output_count]
+        trainOutput = train_data[:, -self.output_count:]
 
-        return testX, testY
+        return trainInput, trainOutput
 
     def run_train(self, input, output):
         result, aux_nn = self.forward(input)
@@ -93,9 +93,9 @@ class SLP:
 
         return loss, accuracy
 
-    def run_test(self, x, y):
-        output, _ = self.forward(x)
-        accuracy = self.eval_accuracy(output, y)
+    def run_test(self, input, output):
+        result, _ = self.forward(input)
+        accuracy = self.eval_accuracy(result, output)
         return accuracy
 
     def forward(self, input):

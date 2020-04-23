@@ -16,7 +16,7 @@ class CommonUtils:
         return np.exp(-CommonUtils.relu(-x)) / (1.0 + np.exp(-np.abs(x)))
 
     @staticmethod
-    def sigmoid_derv(x, y):
+    def sigmoid_derivative(x, y):
         return y * (1 - y)
 
     @staticmethod
@@ -24,7 +24,7 @@ class CommonUtils:
         return CommonUtils.relu(x) - x * z + np.log(1 + np.exp(-np.abs(x)))
 
     @staticmethod
-    def sigmoid_cross_entropy_with_logits_derv(z, x):
+    def sigmoid_cross_entropy_with_logits_derivative(z, x):
         return -z + CommonUtils.sigmoid(x)
 
     @staticmethod
@@ -37,7 +37,7 @@ class CommonUtils:
         return probs
 
     @staticmethod
-    def softmax_derv(x, y):
+    def softmax_derivative(x, y):
         mb_size, nom_size = x.shape
 
         derv = np.ndarray([mb_size, nom_size, nom_size])
@@ -54,7 +54,7 @@ class CommonUtils:
         return -np.sum(labels * np.log(probs + 1.0e-10), axis=1)
 
     @staticmethod
-    def softmax_cross_entropy_with_logits_derv(labels, logits):
+    def softmax_cross_entropy_with_logits_derivative(labels, logits):
         return CommonUtils.softmax(logits) - labels
 
 

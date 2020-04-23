@@ -175,9 +175,9 @@ class SLP:
         g_entropy_output = None
 
         if self.ActivationFuncType == ActivationFuncType.SIGMOID:
-            g_entropy_output = CommonUtils.sigmoid_cross_entropy_with_logits_derv(y, output)
+            g_entropy_output = CommonUtils.sigmoid_cross_entropy_with_logits_derivative(y, output)
         elif self.ActivationFuncType == ActivationFuncType.SOFTMAX:
-            g_entropy_output = CommonUtils.softmax_cross_entropy_with_logits_derv(y, output)
+            g_entropy_output = CommonUtils.softmax_cross_entropy_with_logits_derivative(y, output)
 
         G_entropy = g_loss_entropy * G_loss
         Gradient = g_entropy_output * G_entropy

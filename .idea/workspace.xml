@@ -22,9 +22,31 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.main">
+    <configuration name="SingleLayerPercept" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="trunk" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/SingleLayerPerceptron/Utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/SingleLayerPerceptron/Utils/SingleLayerPercept.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="trunk" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -49,6 +71,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.SingleLayerPercept" />
       </list>
     </recent_temporary>
   </component>
@@ -70,25 +93,37 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2334" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587640253388" />
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1587642238130">
+    <state x="2596" y="145" key="#main" timestamp="1587969575703">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2596" y="145" key="#main/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587969575703" />
+    <state width="1562" height="466" key="DebuggerActiveHint" timestamp="1587972632759">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587642238130" />
-    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1587642238130">
+    <state width="1562" height="466" key="DebuggerActiveHint/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587972632759" />
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom" timestamp="1587974067055">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587642238130" />
-    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1587642238130">
+    <state width="1899" height="287" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587974067055" />
+    <state width="1899" height="287" key="GridCell.Tab.0.center" timestamp="1587974067055">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587642238130" />
-    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1587642238130">
+    <state width="1899" height="287" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587974067055" />
+    <state width="1899" height="287" key="GridCell.Tab.0.left" timestamp="1587974067055">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587642238130" />
+    <state width="1899" height="287" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587974067055" />
+    <state width="1899" height="287" key="GridCell.Tab.0.right" timestamp="1587974067055">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1899" height="287" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587974067055" />
     <state x="2381" y="162" key="SettingsEditor" timestamp="1587640260252">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2381" y="162" key="SettingsEditor/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1587640260252" />
+    <state x="2336" y="46" width="1716" height="1027" maximized="true" key="dock-window-1" timestamp="1587974072840">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2336" y="46" width="1716" height="1027" maximized="true" key="dock-window-1/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1587974072840" />
   </component>
 </project>

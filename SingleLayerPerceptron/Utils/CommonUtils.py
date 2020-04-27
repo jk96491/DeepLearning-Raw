@@ -2,8 +2,24 @@ import numpy as np
 import time
 import enum
 
+from SingleLayerPerceptron.Utils import Optimizer
+
+from SingleLayerPerceptron.Utils.Optimizer import SGD
+from SingleLayerPerceptron.Utils.Optimizer import Momentum
+from SingleLayerPerceptron.Utils.Optimizer import AdaGrad
+from SingleLayerPerceptron.Utils.Optimizer import RMSprop
+from SingleLayerPerceptron.Utils.Optimizer import Adam
+from SingleLayerPerceptron.Utils.Optimizer import Nesterov
 
 class CommonUtils:
+
+    SGD_OPT = SGD()
+    Momentum_OPT = Momentum()
+    Nesterov_OPT = Nesterov()
+    AdaGrad_OPT = AdaGrad()
+    RMSprop_OPT = RMSprop()
+    Adam_OPT = Adam()
+
     def __init__(self):
         np.random.seed(time.time())
 
@@ -57,6 +73,20 @@ class CommonUtils:
     def softmax_cross_entropy_with_logits_derivative(labels, logits):
         return CommonUtils.softmax(logits) - labels
 
+    @staticmethod
+    def UpdateGrad(optimizer, origin_grad, learning_rate, param, name):
+        if optimizer == 'SGD':
+            CommonUtils.SGD_OPT.UpdateGrad(origin_grad, learning_rate, param, name)
+        elif optimizer == 'Momentum':
+            CommonUtils.Momentum_OPT.UpdateGrad(origin_grad, learning_rate, param, name)
+        elif optimizer == 'Nesterov':
+            CommonUtils.Nesterov_OPT.UpdateGrad(origin_grad, learning_rate, param, name)
+        elif optimizer == 'AdaGrad':
+            CommonUtils.AdaGrad_OPT.UpdateGrad(origin_grad, learning_rate, param, name)
+        elif optimizer == 'RMSprop':
+            CommonUtils.RMSprop_OPT.UpdateGrad(origin_grad, learning_rate, param, name)
+        elif optimizer == 'Adam':
+            CommonUtils.Adam_OPT.UpdateGrad(origin_grad, learning_rate, param, name)
 
 class ErrorType(enum.Enum):
     MSE = 0

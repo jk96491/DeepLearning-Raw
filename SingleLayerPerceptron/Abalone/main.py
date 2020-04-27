@@ -5,15 +5,16 @@ from SingleLayerPerceptron.Utils.CommonUtils import ActivationFuncType
 from SingleLayerPerceptron.Utils.CommonUtils import ErrorType
 
 epoch_count = 10
-mb_size = 10
+mb_size = 1
 report = 1
 
 input_count = 10
 output_count = 1
 
 
+# optimizer 선택 가능! : SGD, Nesterov, Momentum, AdaGrad, RMSprop, Adam
 def run():
-    model = SLP(input_count, output_count, epoch_count, mb_size, report, ErrorType.MSE, ActivationFuncType.NONE)
+    model = SLP(input_count, output_count, epoch_count, mb_size, report, ErrorType.MSE, ActivationFuncType.NONE, 'Adam')
     data = load_data()
     model.Train(data)
 

@@ -4,9 +4,8 @@ from SingleLayerPerceptron.Utils.CommonUtils import CommonUtils
 from SingleLayerPerceptron.Utils.CommonUtils import ActivationFuncType
 from SingleLayerPerceptron.Utils.CommonUtils import ErrorType
 
-
 class SLP:
-    def __init__(self, input_count, output_count, epoch_count, mb_size, report, ErrorType, ActivationFuncType):
+    def __init__(self, input_count, output_count, epoch_count, mb_size, report, ErrorType, ActivationFuncType, optimizer):
         self.RAND_MEAN = 0
         self.RAND_STANDARD = 0.0030
         self.LEARNING_RATE = 0.001
@@ -26,6 +25,7 @@ class SLP:
 
         self.ErrorType = ErrorType
         self.ActivationFuncType = ActivationFuncType
+        self.optimizer = optimizer
 
         np.random.seed(1234)
 
@@ -88,8 +88,8 @@ class SLP:
         accuracy = self.eval_accuracy(result, output)
 
         G_loss = 1.0
-        Gradient = self.get_backprop_Gradient(G_loss, aux_pp)
-        self.backpropagation(Gradient, aux_nn)
+        Delta = self.get_backprop_delta(G_loss, aux_pp)
+        self.backpropagation(Delta, aux_nn)
 
         return loss, accuracy
 
@@ -143,19 +143,18 @@ class SLP:
 
         return accuracy
 
-    def get_backprop_Gradient(self, G_loss, aux):
-        Gradient = None
+    def get_backprop_delta(self, G_loss, aux):
+        delta = None
 
         if self.ErrorType == ErrorType.ENTROPY:
-            Gradient = self.GetEntropyGradient(G_loss, aux)
+            delta = self.GetEntropyDelta(G_loss, aux)
 
         elif self.ErrorType.MSE:
-            shape = aux.shape
-            Gradient = self.GetMseGrdient(G_loss, aux)
+            delta = self.GetMseDelta(G_loss, aux)
 
-        return Gradient
+        return delta
 
-    def GetMseGrdient(self, G_loss, aux):
+    def GetMseDelta(self, G_loss, aux):
         shape = aux.shape
 
         g_loss_square = np.ones(shape) / np.prod(shape)
@@ -164,10 +163,10 @@ class SLP:
 
         G_square = g_loss_square * G_loss
         G_diff = g_square_diff * G_square
-        Gradient = g_diff_output * G_diff
-        return Gradient
+        Delta = g_diff_output * G_diff
+        return Delta
 
-    def GetEntropyGradient(self, G_loss, aux):
+    def GetEntropyDelta(self, G_loss, aux):
         y, output, entropy = aux
 
         g_loss_entropy = 1.0 / np.prod(entropy.shape)
@@ -180,15 +179,15 @@ class SLP:
             g_entropy_output = CommonUtils.softmax_cross_entropy_with_logits_derivative(y, output)
 
         G_entropy = g_loss_entropy * G_loss
-        Gradient = g_entropy_output * G_entropy
+        Delta = g_entropy_output * G_entropy
 
-        return Gradient
+        return Delta
 
-    def backpropagation(self, Gradient, input):
+    def backpropagation(self, Delta, input):
         g_output_w = input.transpose()
 
-        G_w = np.matmul(g_output_w, Gradient)
-        G_b = np.sum(Gradient, axis=0)
+        G_w = np.matmul(g_output_w, Delta)
+        G_b = np.sum(Delta, axis=0)
 
-        self.weight -= self.LEARNING_RATE * G_w
-        self.bias -= self.LEARNING_RATE * G_b
+        CommonUtils.UpdateGrad(self.optimizer, G_w, self.LEARNING_RATE, self.weight, 'w')
+        CommonUtils.UpdateGrad(self.optimizer, G_b, self.LEARNING_RATE, self.bias, 'b')
